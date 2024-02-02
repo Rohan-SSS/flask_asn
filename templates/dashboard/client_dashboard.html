@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Client Dashboard{% endblock %}
+{% block content %}
+<div class="container">
+    <h2>Welcome, {{ user.name }}!</h2>
+    <h3>Your Files:</h3>
+    <ul>
+        {% for file in files %}
+            <li>
+                {{ file }}
+                <a href="{{ url_for('download_file_route', filename=file) }}" class="btn btn-primary">Download</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+</div>
+{% endblock %}
